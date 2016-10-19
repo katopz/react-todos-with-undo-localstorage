@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { getNextId, addTodo } from '../actions'
 
-let AddTodo = ({ dispatch }) => {
+const mapStateToProps = (state) => ({
+  nextId: state.nextId
+})
+
+let AddTodo = ({ dispatch, nextId }) => {
   let input
 
   return (
@@ -12,7 +16,8 @@ let AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        dispatch(getNextId(nextId))
+        dispatch(addTodo(nextId, input.value))
         input.value = ''
       }}>
         <input ref={node => {
@@ -25,6 +30,8 @@ let AddTodo = ({ dispatch }) => {
     </div>
   )
 }
-AddTodo = connect()(AddTodo)
+AddTodo = connect(
+  mapStateToProps
+)(AddTodo)
 
 export default AddTodo
