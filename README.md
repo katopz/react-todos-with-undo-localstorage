@@ -1,4 +1,4 @@
-# Redux Todos with Undo Example
+# Redux Todos with Undo Example + localStorage for persistance data store
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app).
 
